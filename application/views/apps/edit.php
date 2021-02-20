@@ -28,22 +28,22 @@
 
                 <div class="form-group">
                   <label>Nombre</label>
-                  <input  disabled type="text" class="form-control" value="<?php echo($apps->nombre); ?>" name="name" id="name">
+                  <input  disabled type="text" class="form-control" value="<?php echo($apps->name); ?>" name="name" id="name">
                 </div>
                
                 <div class="form-group">
                   <label>Description</label>
-                  <input  type="text"  name="descripcion" class="form-control" value="<?php echo($apps->descripcion); ?>">
+                  <input  type="text"  name="description" class="form-control" value="<?php echo($apps->description); ?>">
                 </div>
         
                 <div class="form-group">
                   <label>Precio</label>
-                  <input value="<?php echo($apps->precio);?>" type="text" class="form-control" name="precio" >
+                  <input value="<?php echo($apps->price);?>" type="text" class="form-control" name="price" >
                 </div>
 
                 <div class="form-group">
                    <label>Categoria</label>
-                  <input readonly value="<?php echo($apps->categoria); ?>" type="text" class="form-control" name="category" id="category">
+                  <input readonly value="<?php echo($apps->categorie); ?>" type="text" class="form-control" name="category" id="category">
                 </div>
 
               

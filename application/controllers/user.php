@@ -140,6 +140,7 @@ public function update(){
 
 
 
+
 		$data=array(
 			'nombre'=> $nombre,
 			'apellidos'=> $apellidos,
@@ -151,15 +152,17 @@ public function update(){
 			'estado'=>'1'
 		);
 			
-		if($this->User_model->save($data)){
 		
-			redirect(base_url());
-		}
-		else{
+		print_r($data);
+		// if($this->User_model->save($data)){
+		
+		// 	redirect(base_url());
+		// }
+		// else{
 			
-            $this->session->set_flashdata("error","no se pudo Guardar la informacion");   	
-			redirect(base_url()."index.php/user/add");
-		}
+  //           $this->session->set_flashdata("error","no se pudo Guardar la informacion");   	
+		// 	redirect(base_url()."index.php/user/add");
+		// }
 
 	}
 

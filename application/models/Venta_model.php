@@ -15,9 +15,9 @@ class Venta_model extends CI_model {
 
 	public function getProductos($valor){
         
-        $this->db->select('id, codigo, nombre as label, descripcion, precio');
-        $this->db->from("productos",$valor);
-        $this->db->like("nombre",$valor);
+        $this->db->select('id, codigo, name as label, description, price');
+        $this->db->from("products",$valor);
+        $this->db->like("name",$valor);
         $resultados = $this->db->get();
         return $resultados->result_array();
 
@@ -26,16 +26,21 @@ class Venta_model extends CI_model {
 
 	public function save($data){
 
-		return $this->db->insert("ventas", $data);
+		return $this->db->insert("sales", $data);
 
 	} 
 
 	public function getVentas($idusuario){
 
+		if ($this->session->userdata('rol')=='1') {
+		
+		 $this->db->where("id",$idusuario);
+		}
+
 
 		$this->db->where("usuario_id",$idusuario);
 
-		$resultados = $this->db->get("ventas");
+		$resultados = $this->db->get("sales");
 
 		if ($resultados->num_rows()>0){
 

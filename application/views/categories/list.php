@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        CATEGORIAS
+        categorieS
         <small>List</small>
       </h1>
       
@@ -14,7 +14,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Lista de categorias </h3>
+          <h3 class="box-title">Lista de categories </h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -47,22 +47,24 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php if (!empty($categorias)): ?>
-                      <?php foreach ($categorias as $categoria) : ?>
+                  <?php if (!empty($categories)): ?>
+                      <?php foreach ($categories as $categorie) : ?>
                          <tr>
-                             <td><?php echo $categoria->id; ?></td>
-                             <td><?php echo $categoria->nombre; ?></td>
-                             <td><?php echo $categoria->descripcion; ?></td>
+                             <td><?php echo $categorie->id; ?></td>
+                             <td><?php echo $categorie->name; ?></td>
+                             <td><?php echo $categorie->description; ?></td>
                              <td>
                                 <div class="btn-group">
-                                   <button type="button" class="btn btn-info btn-view" data-toggle="modal" data-target="#modal-default" value="<?php echo $categoria->id; ?>">
+                                   <button type="button" class="btn btn-info btn-view" data-toggle="modal" data-target="#modal-default" value="<?php echo $categorie->id; ?>">
                                         <span class="fa fa-search"></span>
                                    </button>
                                    <?php if ($this->session->userdata('rol')==='Super Admin' or
                                              $this->session->userdata('rol')==='Developer'):  ?>
-                                   <a href="<?php echo base_url();?>index.php/categories/edit/<?php echo  $categoria->id; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
-                                   <a href="<?php echo base_url();?>index.php/categories/delete/<?php echo $categoria->id; ?>"  class="btn btn-danger btn-removes"><span class="fa fa-remove"></span></a>
-                                 <?php endif; ?>
+
+                                                <a href="<?php echo base_url();?>index.php/categories/edit/<?php echo  $categorie->id; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
+                                                <a href="<?php echo base_url();?>index.php/categories/delete/<?php echo $categorie->id; ?>"  class="btn btn-danger btn-removes"><span class="fa fa-remove"></span></a>
+                                 
+                                  <?php endif; ?>
                                 </div>
                              </td>
                          </tr>

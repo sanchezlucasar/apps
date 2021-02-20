@@ -17,7 +17,7 @@
         <div class="box-body">
           <div class="row">
             <div class="col-md-12">
-              <form action="<?php echo base_url();?>index.php/app/store" method="POST">
+              <form action="<?php echo base_url();?>index.php/app/store" enctype="multipart/form-data" method="POST">
                 
                
                 <div class="form-group">
@@ -36,12 +36,18 @@
                 </div>
 
                 <input type="hidden" name='id' value="<?php echo $this->session->userdata('id'); ?>">
+                
+                <div> 
+                  <label for="description">Cargar una Imagen jpg, png, jpeg, de menos de 20 MB</label>
+                  <input type="file" name="upload">
+
+                </div>
 
                 <div class="form-group">
                   <label for="description">Category</label>
                   <select required name='categoria' class="form-control" >          
                   <?php  foreach ($categorias as $categoria):?>
-                  <?php  echo "<option value='$categoria->id'>".$categoria->nombre."</option>"; ?>
+                  <?php  echo "<option value='$categoria->id'>".$categoria->name."</option>"; ?>
                   <?php endforeach;?>
 
                   </select> 

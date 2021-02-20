@@ -56,18 +56,18 @@
 
                       <?php foreach ( $apps as $app ) : ?>
 
-                      <?php $dataproducto = $app->id."*".$app->codigo."*".$app->nombre."*".$app->descripcion."*".$app->precio."*".$app->categoria."*".$app->usuarios;
+                      <?php $dataproducto = $app->id."*".$app->codigo."*".$app->name."*".$app->description."*".$app->price."*".$app->categorie."*".$app->users;
                        ?>
                        <form action="" method="POST"></form>
                          <tr> 
-                            <?php if ( ($app->usuarios === $this->session->userdata('nombre')) or ($this->session->userdata('rol')==='Cliente')or ($this->session->userdata('rol')==='Super Admin')):  ?>   
+                            <?php if ( ($app->users === $this->session->userdata('nombre')) or ($this->session->userdata('rol')==='Cliente')or ($this->session->userdata('rol')==='Super Admin')):  ?>   
                                <td><?php echo $app->id; ?></td>
                                <td><?php echo $app->codigo; ?></td>
-                               <td><?php echo $app->nombre; ?></td>
-                               <td><?php echo $app->descripcion; ?></td>
-                               <td><?php echo $app->precio; ?></td>
-                               <td><?php echo $app->usuarios; ?></td>
-                               <td><?php echo $app->categoria; ?></td>
+                               <td><?php echo $app->name; ?></td>
+                               <td><?php echo $app->description; ?></td>
+                               <td><?php echo $app->price; ?></td>
+                               <td><?php echo $app->users; ?></td>
+                               <td><?php echo $app->categorie; ?></td>
                               
                                <td>
 

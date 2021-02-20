@@ -36,8 +36,10 @@
               <table id="example1" class=" table table-bordered btn-hover">
                 <thead>
                   <tr>
-                     <th>#</th>
-                    <th>fecha</th>
+                    <th>#</th>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Detalle</th>
                     <th>total</th>
                     
                   </tr>
@@ -48,6 +50,8 @@
                          <tr>
                              <td><?php echo $venta->id; ?></td>
                              <td><?php echo $venta->fecha; ?></td>
+                             <td><?php echo $venta->nombre_cliente;  ?></td>
+                             <td><?php echo $venta->detalle; ?></td>
                              <td><?php echo $venta->total; ?></td>
 
                             

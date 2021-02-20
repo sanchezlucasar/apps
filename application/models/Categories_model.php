@@ -15,9 +15,9 @@ class Categories_model extends CI_model {
 	 public function getCategories(){
 
 
-		$this->db->where("estado","1");
+		$this->db->where("cond","1");
 
-		$resultados = $this->db->get("categorias");
+		$resultados = $this->db->get("categories");
 
 		if ($resultados->num_rows()>0){
 
@@ -31,13 +31,13 @@ class Categories_model extends CI_model {
 
 	public function save($data){
 
-		return $this->db->insert("categorias", $data);
+		return $this->db->insert("categories", $data);
 
 	} 
 
 	public function getCategory($id){
 		$this->db->where("id",$id);
-		$resultado = $this->db->get("categorias");
+		$resultado = $this->db->get("categories");
 
 		return $resultado->row();
 	}
@@ -45,13 +45,14 @@ class Categories_model extends CI_model {
 	public function update($id,$data){
 
 		$this->db->where("id",$id);
-		return $this->db->update("categorias",$data);
+		
+		return $this->db->update("categories",$data);
 	
 	}
 
 	public function delete($id){
 		$this->db->where ("id",$id);
-		return $this->db->update("estado","2");
+		return $this->db->update("cond","2");
 
 
 	}

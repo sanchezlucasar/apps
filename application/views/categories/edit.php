@@ -18,15 +18,15 @@
           <div class="row">
             <div class="col-md-12">
               <form action="<?php echo base_url();?>index.php/categories/update" method="POST">
-                <input type="hidden" id="idCategory" name="idCategory" value="<?php echo($categoria->id); ?>" >
+                <input type="hidden" id="idCategory" name="idCategory" value="<?php echo($categorie->id); ?>" >
 
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control" name="name" id="name" value="<?php echo($categoria->nombre); ?>" >
+                  <input type="text" class="form-control" name="name" id="name" value="<?php echo($categorie->name); ?>" >
                 </div>
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <input type="text" class="form-control" name="description" id="description" value="<?php echo $categoria->descripcion; ?>">
+                  <input type="text" class="form-control" name="description" id="description" value="<?php echo $categorie->description; ?>">
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-success btn-flat">Update</button>

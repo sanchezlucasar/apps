@@ -297,7 +297,7 @@
       },
       minLength:2,
       select: function(event, ui){
-        data = ui.item.id + "*"+ ui.item.codigo+"*"+ ui.item.label+"*"+ ui.item.descripcion+"*"+ui.item.precio;
+        data = ui.item.id + "*"+ ui.item.codigo+"*"+ ui.item.label+"*"+ ui.item.description+"*"+ui.item.price;
         $("#btn-agregar").val(data);
       }
 
@@ -309,11 +309,12 @@
       
       var infoproducto = data.split("*");
       html = "<tr>";
-      html += "<td><input type='hidden' name='idproductos[]' value='"+infoproducto[1]+"'>"+infoproducto[1]+"</td>";
-      html += "<td>"+infoproducto[2]+"</td>";
-      html += "<td>"+infoproducto[3]+"</td>";
-      html += "<td><input type='hidden' name='precios[]' value='"+infoproducto[4]+"'>"+infoproducto[4]+"</td>";
-      html += "<td><button type='button' class='btn btn-danger btn-remove-producto'><span class='fa fa-remove'></span></button></td>";
+      html +="<td><input type='hidden' name='idproductos[]' value='"+infoproducto[1]+"'>"+infoproducto[1]+"</td>";
+      html +="<td><input name='detalle[]' type= 'text' readonly value='"+infoproducto[2]+"'></td>";
+      // html +="<td>"+infoproducto[2]+"</td>";
+      html +="<td>"+infoproducto[3]+"</td>";
+      html +="<td><input type='hidden' name='precio[]' value='"+infoproducto[4]+"'>"+infoproducto[4]+"</td>";
+      html +="<td><button type='button' class='btn btn-danger btn-remove-producto'><span class='fa fa-remove'></span></button></td>";
       html += "<tr>";
       $("#tbventas tbody").append(html);
       sumar();

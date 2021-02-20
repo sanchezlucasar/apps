@@ -20,13 +20,14 @@ public function __construct(){
 	 function login(){
 	 	
 	 	
-
+       
 		$username =$this->input->post("username");
 		$password =$this->input->post("password");
 
 		
 
 		$res= $this->User_model->login($username, $password);
+
 
 		if (!$res) {
 			// vuelve al login
@@ -65,16 +66,30 @@ public function __construct(){
 		}
 
 }
-   public function register(){
- 	  $data =   array( 'roles'=> $this->User_model->getRoles() ); 
-     $this->load->view('user/register',$data);
+
+public function register(){
+	
+	$data =   array( 'roles'=> $this->User_model->getRoles() ); 
+
+	$this->load->view('user/register',$data);
 
 }
 
-	public function index()
-	{
 
-		$this->load->view('login_view');
+public function index() {
+
+
+
+	$this->load->view('login_view');
+
+	}
+
+
+public function logout() {
+	// Removing session data
+	$this->session->sess_destroy();
+	echo "<script>alert('SE HA CERRADO CORRECTAMENTE LA SESION');</script>";
+	redirect(base_url()."index.php/auth", "refresh");
 	}
 
 }

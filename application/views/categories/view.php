@@ -1,3 +1,3 @@
-<p> <strong>Nombre:</strong> <?php echo $categoria->nombre ?></p>
+<p> <strong>Nombre:</strong> <?php echo $categorie->name ?></p>
 
-<p> <strong>Descripcion:</strong> <?php echo $categoria->descripcion ?></p>
+<p> <strong>Descripcion:</strong> <?php echo $categorie->description ?></p>

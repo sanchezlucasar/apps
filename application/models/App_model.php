@@ -14,11 +14,11 @@ class App_model extends CI_model {
 	public function getApps(){
 
 
-        $this->db->select("p.*,c.nombre as categoria, u.nombre as usuarios");
-        $this->db-> from("productos p");
-        $this->db->join("categorias c","p.categoria_id = c.id" );
-        $this->db->join("usuarios u","p.id_usuario = u.id");
-		$this->db->where("p.estado","1");
+        $this->db->select("p.*,c.name as categorie, u.nombre as users");
+        $this->db-> from("products p");
+        $this->db->join("categories c","p.categoria_id = c.id" );
+        $this->db->join("users u","p.id_usuario = u.id");
+		$this->db->where("p.cond","1");
 
 		$resultados = $this->db->get();
 
@@ -32,7 +32,7 @@ class App_model extends CI_model {
 	
 	public function maxId(){
 		
-		$query = "SELECT MAX(id) AS id FROM productos";
+		$query = "SELECT MAX(id) AS id FROM products";
 
 		$q = $this->db->query($query) ;
 
@@ -50,9 +50,9 @@ class App_model extends CI_model {
 	public function getCategories(){
 
 
-		$this->db->where("estado","1");
+		$this->db->where("cond","1");
 
-		$resultados = $this->db->get("categorias");
+		$resultados = $this->db->get("categories");
 
 		if ($resultados->num_rows()>0){
 
@@ -66,9 +66,9 @@ class App_model extends CI_model {
 
 	public function getApp($id){
 
-		$this->db->select("p.*,c.nombre as categoria");
-        $this->db-> from("productos p");
-        $this->db->join("categorias c","p.categoria_id = c.id");
+		$this->db->select("p.*,c.name as categorie");
+        $this->db-> from("products p");
+        $this->db->join("categories c","p.categoria_id = c.id");
 
 
 		$this->db->where("p.id",$id);
@@ -79,7 +79,7 @@ class App_model extends CI_model {
 
 	public function save($data){
 
-		return $this->db->insert("productos", $data);
+		return $this->db->insert("products", $data);
 
 	} 
 
@@ -87,7 +87,7 @@ class App_model extends CI_model {
 
 		$this->db->where("id",$id);
 		
-		return $this->db->update("productos",$data);
+		return $this->db->update("products",$data);
 	}
 
 }

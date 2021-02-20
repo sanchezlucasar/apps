@@ -29,13 +29,13 @@ public function index(){
 
 
 	public function add(){
-       //$data =   array('comprobante'=> $this->Venta_model->getComprobantes()); 
+       // $data =   array('comprobante'=> $this->Venta_model->getComprobantes()); 
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
 		$this->load->view('ventas/add');
 		$this->load->view('layouts/footer');
 
-	}
+	} 
 
 	public function getproductos(){
 
@@ -52,28 +52,38 @@ public function index(){
 
 		$fecha= date("Y-m-d H:i:s");
 		$id_cliente= $this->input->post("idcliente");
-		$total= $this->input->post("total");
+		$val ='';
+
+		 foreach ( $this->input->post("detalle") as $det) {
+		 	$val .=$det." , ";
+
+		 }
+		 $detalle = $val;
+
+		 $total= $this->input->post("total");
 
 
 
-		$data=array(
+		 $data=array(
 				
-			'fecha'=>$fecha,
-			'total'=>$total,
-			'usuario_id'=>$id_cliente,
+		 	'fecha'=>$fecha,
+		 	'total'=>$total,
+		 	'detalle'=>$detalle,
+		 	'usuario_id'=>$id_cliente,
+		 	'cliente_id'=>$id_cliente,
+		 	'nombre_cliente'=>$this->session->userdata('nombre')
+			 );
+
+
+
+		 if($this->Venta_model->save($data)){
+		 	redirect(base_url()."index.php/ventas");
+		 }
+		 else{
 			
-		);
-
-
-
-		if($this->Venta_model->save($data)){
-			redirect(base_url()."index.php/ventas");
-		}
-		else{
-			
-            $this->session->set_flashdata("error","no se pudo Guardar la informacion");   	
-			redirect(base_url()."index.php/user/add");
-		}
+             $this->session->set_flashdata("error","no se pudo Guardar la informacion");   	
+		 	redirect(base_url()."index.php/user/add");
+		 }
 	}
 
 

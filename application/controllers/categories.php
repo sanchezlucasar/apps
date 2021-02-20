@@ -22,7 +22,7 @@ public function __construct(){
 	public function index()
 	{
 		
-		$data = array('categorias' => $this->Categories_model->getCategories() );
+		$data = array('categories' => $this->Categories_model->getCategories() );
 		
 		
 		$this->load->view('layouts/header');
@@ -42,16 +42,16 @@ public function __construct(){
 
 	public function store(){
 		
-		$nombre= $this->input->post("name");
-		$descripcion= $this->input->post("description");
+		$name= $this->input->post("name");
+		$description= $this->input->post("description");
 		
-		$this->form_validation->set_rules("name", "Nombre", "required|is_unique[categorias.nombre]", );
+		$this->form_validation->set_rules("name", "Nombre", "required|is_unique[categories.name]", );
 		
 		if ($this->form_validation->run()) {
 			$data=array(
-			'nombre'=>$nombre,
-			'descripcion'=>$descripcion,
-			'estado'=>"1"
+			'name'=>$name,
+			'description'=>$description,
+			'cond'=>"1"
 		);
 
 		if($this->Categories_model->save($data)){
@@ -74,7 +74,7 @@ public function __construct(){
 
 	public function edit($id){
 
-		$data = array('categoria' => $this->Categories_model->getCategory($id));
+		$data = array('categorie' => $this->Categories_model->getCategory($id));
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
 		$this->load->view('categories/edit', $data);
@@ -83,25 +83,29 @@ public function __construct(){
 	}
 
 	public function update(){
-		$idCategoria= $this->input->post("idCategory");
-		$nombre= $this->input->post("name");
-		$descripcion= $this->input->post("description");
+		$idCategory= $this->input->post("idCategory");
+		$name= $this->input->post("name");
+		$description= $this->input->post("description");
+
 		
 		$dataCat=array(
 			
-			'nombre'=> $nombre,
-			'descripcion' => $descripcion
+			'name'=> $name,
+			'description' => $description,
+			'cond'=>'1'
 		);
 
-		if ($this->Categories_model->update($idCategoria,$dataCat)){
 
-			redirect(base_url()."index.php/categories");
-		}
-		else{
+
+		if ($this->Categories_model->update($idCategory,$dataCat)){
+
+		 	redirect(base_url()."index.php/categories");
+		 }
+		 else{
 			
-            $this->session->set_flashdata("error","no se pudo Editar la informacion");   	
-			redirect(base_url()."index.php/categories/edit/".$idCategoria);
-		}             
+             $this->session->set_flashdata("error","no se pudo Editar la informacion");   	
+		 	redirect(base_url()."index.php/categories/edit/".$idCategoria);
+		 }             
 		
 
 
@@ -109,7 +113,7 @@ public function __construct(){
 
 	public function view($id){
 
-		$data=array( 'categoria'=> $this->Categories_model->getCategory($id));
+		$data=array( 'categorie'=> $this->Categories_model->getCategory($id));
 
 		$this->load->view("categories/view", $data);
 
@@ -117,7 +121,7 @@ public function __construct(){
 
 	public function delete($id){
 
-		$data=array( 'estado' => 0);
+		$data=array( 'cond' => 0);
 
 		$this->Categories_model->update($id, $data);
 
